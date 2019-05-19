@@ -1,6 +1,11 @@
 # cronic
 
-Interactive cron invocation tool.
+Interactive cron invocation tool
+
+`cronic` lists the crontab files installed on the local machine.
+Once the user chooses a specific crontab file, it shows the commands included inside the file.
+A user can select a command and choose to execute the command.
+The command will be run in a suitable environment, and as the specific user as specified in the crontab file.
 
 # Building
 
@@ -54,6 +59,7 @@ The filenames have the prefix `cronic`.
 The application assumes all crontabs are in Vixie format, specifically:
 
 1. the first 5 whitespace-delimited tokens on a line are the time specification
+
    Shortcuts such as (`@daily`) are also supported
 2. the next token is the user under which the command is run
 3. the remainder of the line is the command to be run
@@ -65,3 +71,9 @@ The application assumes all crontabs are in Vixie format, specifically:
   These are usually due to incorrect permissions.
 
 * Percent (`%`) symbols in the commands are not un-escaped
+
+* Only Vixie cron format is supported
+
+## Future Improvements
+
+* Cleaner UI + better shortcuts
