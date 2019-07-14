@@ -49,13 +49,16 @@ func NewUI(crontabs *crontabCollection) *tview.Application {
 		}
 
 		for _, c := range crontab.Commands() {
-			commands.AddItem(c.command, "", 0, func() {
-				file, err := crontab.WriteCommand(c.command)
+			command := c.command
+			user := c.user
+
+			commands.AddItem(command, "", 0, func() {
+				file, err := crontab.WriteCommand(command)
 				if err != nil {
 					return
 				}
 
-				cmd := exec.Command("sudo", "-u", c.user, file)
+				cmd := exec.Command("sudo", "-u", user, file)
 
 				if err := cmd.Start(); err != nil {
 					panic(err)
