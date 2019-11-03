@@ -2,7 +2,7 @@ undefine _missing_build_ids_terminate_build
 
 Name:          cronic
 Summary:       Interactive cron invocation tool
-Version:       1.0.1
+Version:       1.1.0
 Release:       1%{?dist}
 
 Group:         Applications
@@ -40,6 +40,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/cronic.1.gz
 
 %changelog
+* Sun Nov 03 2019 James Michael <jamesamichael@gmail.com> - 1.1.0-1
+- Exit after running command
+- Add -path flag, CRONIC_PATH environment variable
+
 * Sun Jul 14 2019 James Michael <jamesamichael@gmail.com> - 1.0.1-1
 - Ensure the selected command is run (#1)
 
