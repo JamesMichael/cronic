@@ -6,23 +6,19 @@ import (
 	"sort"
 )
 
-const (
-	crondir = "/etc/cron.d"
-)
-
 type crontabCollection struct {
 	crontabs map[string]*crontab
 }
 
-func crontabPaths() ([]string, error) {
-	files, err := ioutil.ReadDir(crondir)
+func crontabPaths(path string) ([]string, error) {
+	files, err := ioutil.ReadDir(path)
 	if err != nil {
-		return nil, fmt.Errorf("Unable to load crontabs from %s", crondir)
+		return nil, fmt.Errorf("Unable to load crontabs from %s", path)
 	}
 
 	paths := make([]string, 0)
 	for _, file := range files {
-		paths = append(paths, crondir+"/"+file.Name())
+		paths = append(paths, path+"/"+file.Name())
 	}
 
 	return paths, nil

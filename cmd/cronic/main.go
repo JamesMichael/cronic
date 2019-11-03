@@ -1,8 +1,18 @@
 package main
 
-import "github.com/jamesmichael/cronic"
+import (
+	"flag"
+
+	"github.com/jamesmichael/cronic"
+)
 
 func main() {
-    app := cronic.New()
-    app.Run()
+	path := flag.String("path", cronic.Getenv("CRONIC_PATH", "/etc/cron.d"), "Path to crontabs")
+	flag.Parse()
+
+	options := cronic.NewOptions()
+	options.SetPath(*path)
+
+	app := cronic.New(options)
+	app.Run()
 }

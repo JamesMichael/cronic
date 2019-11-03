@@ -11,8 +11,8 @@ type application struct {
 	crontabs *crontabCollection
 }
 
-func New() *application {
-	paths, err := crontabPaths()
+func New(options *Options) *application {
+	paths, err := crontabPaths(options.path)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
