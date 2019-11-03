@@ -9,7 +9,7 @@ The command will be run in a suitable environment, and as the specific user as s
 
 # Building
 
-Requires Go 1.11 or later.
+Requires Go 1.13 or later.
 
 ```sh
 go get
@@ -19,8 +19,13 @@ go build cmd/cronic/main.go
 # Running
 
 ```
-./main
+cmd/cronic/cronic [OPTIONS]
 ```
+
+## Options
+
+* `-path STRING`
+    * path to crontabs, defaults to `CRONIC_PATH` environment variable, or `/etc/cron.d`
 
 ## Usage
 
@@ -66,7 +71,7 @@ The application assumes all crontabs are in Vixie format, specifically:
 
 ## Known issues
 
-* Errors while launching the script cause the application exit
+* Errors while launching the script cause the application to exit
 
   These are usually due to incorrect permissions.
 
