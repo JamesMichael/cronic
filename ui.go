@@ -63,6 +63,8 @@ func NewUI(crontabs *crontabCollection) *tview.Application {
 				if err := cmd.Start(); err != nil {
 					panic(err)
 				}
+
+				app.Stop()
 			})
 		}
 	})
