@@ -1,4 +1,4 @@
-undefine _missing_build_ids_terminate_build
+%undefine _missing_build_ids_terminate_build
 
 Name:          cronic
 Summary:       Interactive cron invocation tool
