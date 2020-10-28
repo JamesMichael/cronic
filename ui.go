@@ -75,12 +75,13 @@ func NewUI(crontabs *crontabCollection) *tview.Application {
 		})
 	}
 
-	flex := tview.NewFlex().
-		AddItem(files, 0, 1, true).
-		AddItem(tview.NewFlex().SetDirection(tview.FlexRow).
-			AddItem(environment, 0, 1, false).
-			AddItem(commands, 0, 2, true), 0, 3, false)
-
+	flex := tview.NewGrid().SetRows(1, 0).
+		AddItem(tview.NewTextView().SetText("[up/down] select crontab/command, [enter] choose crontab/execute command, [escape] go back/exit"), 0, 0, 1, 1, 0, 0, false).
+		AddItem(tview.NewFlex().SetDirection(tview.FlexColumn).
+			AddItem(files, 0, 1, true).
+			AddItem(tview.NewFlex().SetDirection(tview.FlexRow).
+				AddItem(environment, 0, 1, false).
+				AddItem(commands, 0, 2, true), 0, 3, false), 1, 0, 1, 1, 0, 0, true)
 	app.SetRoot(flex, true)
 
 	return app
