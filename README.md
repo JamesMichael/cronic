@@ -7,6 +7,8 @@ Once the user chooses a specific crontab file, it shows the commands included in
 A user can select a command and choose to execute the command.
 The command will be run in a suitable environment, and as the specific user as specified in the crontab file.
 
+![Screenshot](./screenshot.png)
+
 # Building
 
 Requires Go 1.13 or later.
